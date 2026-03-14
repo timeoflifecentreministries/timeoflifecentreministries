@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Of Life Centre Ministries | Christ Lives Forever</title>
+<meta name="description" content="Time Of Life Centre Ministries led by Rafael Michael. A Christian ministry preaching the Gospel, healing, deliverance and prayer in South Africa.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+html { scroll-behavior:smooth; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  background: linear-gradient(to bottom,#0b0f2a,#1a1f4d);
+  color:white;
+  line-height:1.6;
+}
+header {
+  background:black;
+  padding:20px;
+  text-align:center;
+  border-bottom:3px solid gold;
+}
+header img { height:80px; margin-bottom:10px; }
+nav a {
+  color:white;
+  margin:10px;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+}
+.menu-toggle {
+  display:none;
+  font-size:20px;
+  cursor:pointer;
+  color:white;
+  padding:10px;
+}
+.nav-links {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+nav a:hover { color:gold; }
+
+.hero { background:url('1736870413033.jpg') center/cover no-repeat; }
+.hero-overlay {
+  background:rgba(0,0,0,0.65);
+  padding:160px 20px;
+  text-align:center;
+}
+.hero h1 { font-size:48px; margin:10px; }
+.hero h3 { font-size:24px; color:gold; }
+
+.section {
+  padding:70px 20px;
+  text-align:center;
+  max-width:1000px;
+  margin:auto;
+}
+.section:nth-child(even) { background:#111; }
+.section h2 { color:gold; margin-bottom:20px; }
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+.card {
+  background:#111;
+  padding:25px;
+  border-radius:10px;
+}
+
+button {
+  padding:14px 28px;
+  border:none;
+  background:gold;
+  font-size:16px;
+  cursor:pointer;
+  border-radius:5px;
+}
+button:hover { background:#ffd700; }
+
+input,textarea {
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:6px;
+  border:none;
+}
+.form-box { max-width:600px; margin:auto; }
+
+.video-box {
+  max-width:800px;
+  margin:30px auto;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
+
+.calendar-box, .map-box {
+  max-width:800px;
+  margin:auto;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.giving-images {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:40px;
+}
+.giving-images img {
+  width:100%;
+  border-radius:10px;
+}
+
+.social a {
+  color:white;
+  display:block;
+  margin:6px;
+}
+
+footer {
+  background:black;
+  padding:40px;
+  text-align:center;
+  border-top:3px solid gold;
+  margin-top:40px;
+}
+footer a { color:gold; text-decoration:none; }
+footer a:hover { text-decoration:underline; }
+
+.floating-whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  font-size:26px;
+  padding:15px 18px;
+  border-radius:50%;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
+
+.youtube-subscribe {
+  margin-top:20px;
+  background:#111;
+  padding:20px;
+  border-radius:10px;
+}
+.youtube-subscribe button {
+  background:red;
+  color:white;
+  font-weight:bold;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  nav {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  nav a {
+    display:block;
+    margin:8px 0;
+    font-size:16px;
+  }
+  header img { height:60px; }
+  .hero-overlay { padding:100px 15px; }
+  .hero h1 { font-size:30px; }
+  .hero h3 { font-size:18px; }
+  .section { padding:50px 15px; }
+  .video-box iframe { height:250px; }
+  .calendar-box iframe { height:350px; }
+  .map-box iframe { height:300px; }
+  .cards { grid-template-columns:1fr; }
+  button { width:100%; margin-top:10px; }
+}
+</style>
+
+<script>
+function sendPrayer(){
+  let name=document.getElementById('pname').value;
+  let request=document.getElementById('prequest').value;
+  let msg=`Prayer Request from ${name}: ${request}`;
+  let url=`https://wa.me/27798081867?text=${encodeURIComponent(msg)}`;
+  window.open(url,'_blank');
+}
+function sendPrayerEmail(){
+  let name=document.getElementById('pname').value;
+  let request=document.getElementById('prequest').value;
+  let subject="Prayer Request";
+  let body=`Name: ${name}%0D%0A%0D%0APrayer Request:%0D%0A${request}`;
+  window.location.href=`mailto:timeoflifecentreministries@gmail.com?subject=${subject}&body=${body}`;
+}
+function sendTestimony(){
+  let name=document.getElementById('tname').value;
+  let testimony=document.getElementById('ttestimony').value;
+  let msg=`Testimony from ${name}: ${testimony}`;
+  let url=`https://wa.me/27798081867?text=${encodeURIComponent(msg)}`;
+  window.open(url,'_blank');
+}
+function toggleMenu(){
+  let menu=document.getElementById("navLinks");
+  menu.classList.toggle("active");
+}
+</script>
+</head>
+<body>
+
+<header>
+<img src="LOGO 2 DROP SHADOW (1).png">
+<h2>TIME OF LIFE CENTRE MINISTRIES</h2>
+<p><b>Christ Lives Forever</b></p>
+</header>
+
+<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#leader">Leader</a>
+<a href="#services">Services</a>
+<a href="#live">Live</a>
+<a href="#events">Events</a>
+<a href="#calendar">Calendar</a>
+<a href="#prayer">Prayer</a>
+<a href="#testimony">Testimony</a>
+<a href="#give">Give</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-overlay">
+<h1>Time Of Life Centre Ministries</h1>
+<h3>Led by Rafael Michael – The Divine Healer</h3>
+<p>Proclaiming the Gospel of our Lord and Saviour Jesus Christ with fire and truth.</p>
+<p style="margin-top:20px; background:gold; color:black; padding:12px; border-radius:6px; font-weight:bold;">
+Church Building is now open. You are welcome to join us for fellowship at Time Of Life Centre Ministries.
+</p>
+<br>
+<button onclick="window.location.href='https://www.youtube.com/@TimeOfLifeCentre'">Watch Live Service</button>
+</div>
+</section>
+
+<section class="section" id="about">
+<h2>About The Ministry</h2>
+<p>Time Of Life Centre Ministries is a registered non-profit Christian ministry (NPO: 2021/988503/08) based in Vlakbult / Mdladla in Nkomazi, Mpumalanga, South Africa.</p>
+<p>The ministry is led by Rafael Michael and carries a divine mandate to preach the Gospel with truth, power, healing, deliverance and prophetic ministry.</p>
+<p>Through the preaching of the Word of God, prayer and the power of the Holy Spirit, the ministry seeks to bring salvation, restoration, healing and hope to individuals, families and communities.</p>
+</section>
+
+<section class="section" id="leader">
+<h2>Rafael Michael</h2>
+<p><b>The Divine Healer</b></p>
+<p>Founder and leader of Time Of Life Centre Ministries. Through this ministry many people receive prayer, healing, encouragement and spiritual guidance through the Word of God.</p>
+</section>
+
+<section class="section" id="services">
+<h2>Church Services</h2>
+<div class="cards">
+<div class="card"><h3>Wednesday</h3><p>18:00till late</p></div>
+<div class="card"><h3>Thursday</h3><p>18:00 till late</p></div>
+<div class="card"><h3>Sunday</h3><p>10:00 till late</p></div>
+</div>
+</section>
+
+<section class="section" id="live">
+<h2>Latest Service / Broadcast</h2>
+<div id="liveBadge" style="
+display:none;
+background:red;
+color:white;
+padding:8px 14px;
+border-radius:6px;
+font-weight:bold;
+margin-bottom:15px;
+width:fit-content;
+animation:blink 1s infinite;">
+🔴 LIVE NOW
+</div>
+
+<div class="video-box" style="border:3px solid gold; padding:10px; border-radius:10px; max-width:800px; margin:auto; text-align:center;">
+<h3 style="color:gold;">Latest Upload</h3>
+<div id="latest-video"></div>
+<p>Catch up on the most recent service.</p>
+</div>
+
+<br>
+<button onclick="window.open('https://www.youtube.com/@TimeOfLifeCentre','_blank')"
+style="background:gold; color:black; padding:10px 20px; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">
+Watch on YouTube
+</button>
+
+<br><br>
+<div class="youtube-subscribe">
+<p><b>Subscribe to our YouTube Channel</b></p>
+<a href="https://www.youtube.com/@TimeOfLifeCentre" target="_blank">
+<button>Subscribe</button>
+</a>
+</div>
+
+<h2>Previous Services</h2>
+<div id="video-gallery" class="cards"></div>
+</section>
+
+<script>
+async function loadLatestVideo() {
+  const apiKey = "YOUR_API_KEY"; // replace with restricted YouTube Data API key
+  const channelId = "UCmZqmF6M3ttQHft4kM0aJ_A";
+  const response = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=1`
+  );
+  const data = await response.json();
+  const videoId = data.items[0].id.videoId;
+  document.getElementById("latest-video").innerHTML =
+    `<iframe width="100%" height="420" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+}
+loadLatestVideo();
+
+async function loadVideoGallery() {
+  const apiKey = "YOUR_API_KEY"; // replace with restricted YouTube Data API key
+  const channelId = "UCmZqmF6M3ttQHft4kM0aJ_A";
+  const response = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=6`
+  );
+  const data = await response.json();
+  const gallery = document.getElementById("video-gallery");
+  data.items.forEach(video => {
+    const videoId = video.id.videoId;
+    gallery.innerHTML += `
+      <div class="card">
+        <iframe width="100%" height="200"
+        src="https://www.youtube.com/embed/${videoId}"
+        frameborder="0"
+        allowfullscreen></iframe>
+      </div>`;
+  });
+}
+loadVideoGallery();
+</script></section>
+
+<section class="section" id="events">
+<h2>Crusades & Upcoming Events</h2>
+<div class="cards">
+  <div class="card"><h3>Healing & Deliverance Service</h3><p>Special prayer and healing service led by Rafael Michael.</p></div>
+  <div class="card"><h3>Revival Night</h3><p>A powerful night of worship, prayer and the Word.</p></div>
+  <div class="card"><h3>Community Crusade</h3><p>Evangelism and outreach to bring people to Christ.</p></div>
+</div>
+
+<h3>Street Evangelism Outreach</h3>
+<img src="Jesus to the street.png" style="width:100%; border-radius:10px; margin-bottom:15px;">
+<p><b>We Are Taking Jesus Back To The Streets!</b></p>
+<p>
+Open Air Street Evangelism Movement hosted by 
+<strong>Time Of Life Centre Ministries</strong>.
+Come and encounter the power of God through
+the preaching of the Gospel, prayer, and worship.
+</p>
+<button onclick="window.location.href='#contact'">Get More Information</button>
+</section>
+
+<section class="section" id="calendar">
+<h2>Ministry Calendar</h2>
+<div class="calendar-box">
+<iframe src="https://calendar.google.com/calendar/embed?height=500" width="100%" height="450" frameborder="0" scrolling="no"></iframe>
+</div>
+</section>
+
+<section class="section" id="prayer">
+<h2>Send a Prayer Request</h2>
+<div class="form-box">
+  <input id="pname" placeholder="Your Name">
+  <textarea id="prequest" rows="5" placeholder="Type your prayer request"></textarea>
+  <button onclick="sendPrayer()">Send on WhatsApp</button>
+  <button onclick="sendPrayerEmail()">Send by Email</button>
+</div>
+</section>
+
+<section class="section" id="testimony">
+<h2>Share Your Testimony</h2>
+<div class="form-box">
+  <input id="tname" placeholder="Your Name">
+  <textarea id="ttestimony" rows="5" placeholder="Share what God has done for you"></textarea>
+  <button onclick="sendTestimony()">Send Testimony</button>
+</div>
+</section>
+
+<section class="section giving" id="give">
+<h2>Tithes, Offerings & Partnership</h2>
+<p>All giving is voluntary and Spirit-led.</p>
+
+<div class="cards">
+  <div class="card">
+    <h3>Online Giving (PayPal)</h3>
+    <p>You can also support the ministry securely online using PayPal.</p>
+    <a href="https://www.paypal.com/ncp/payment/3NKJ2FMZWUL2N" target="_blank">
+      <button style="background:#0070ba; color:white; padding:12px 20px; border:none; border-radius:6px; font-size:16px; cursor:pointer;">
+        Donate via PayPal
+      </button>
+    </a>
+    <br><br>
+    <img src="Donation to Ti-qrcode.png" style="width:220px;">
+    <p>Scan the QR code to give using your phone.</p>
+  </div>
+
+  <div class="card">
+    <h3>FNB (EFT)</h3>
+    <p><b>Account Name:</b> Time Of Life Centre Ministries</p>
+    <p><b>Account Number:</b> 6300590393</p>
+    <p><b>Account Type:</b> Savings</p>
+    <p><b>Branch Code:</b> 250107</p>
+    <p><b>SWIFT Code:</b> FIRNZAJJ</p>
+  </div>
+
+  <div class="card">
+    <h3>Capitec Bank – Prophetic Offering</h3>
+    <p><b>Account Holder:</b> RM Mabuza</p>
+    <p><b>Account Number:</b> 1498388688</p>
+    <p><b>Account Type:</b> Savings</p>
+    <p><b>Branch Code:</b> 400710</p>
+    <p><b>Reference:</b> Your Name / Ministry / Company</p>
+  </div>
+
+  <div class="card">
+    <h3>Mukuru (African Countries)</h3>
+    <p><b>Bank:</b> Access Bank</p>
+    <p><b>Account Holder:</b> RM Mabuza</p>
+    <p><b>Account Number:</b> 51244220632</p>
+    <p><b>Cell Registered:</b> +27 76 066 3976</p>
+    <p><b>Branch Code:</b> 410506</p>
+  </div>
+</div>
+
+<div class="giving-images">
+  <img src="FUNDRAISING.jpg">
+  <img src="MINISTRY BANKING DETAILS.jpg">
+  <img src="MUKURU FOR AFRICAN COUNTRIES.jpg">
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2>Contact</h2>
+<p>Email: timeoflifecentreministries@gmail.com</p>
+<p>Phone / WhatsApp: +27 79 808 1867</p>
+<h3>Follow Our Platforms</h3>
+<div class="social">
+  <a href="https://www.youtube.com/@TimeOfLifeCentre" target="_blank"
+     style="display:inline-block; background:#FF0000; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; margin:5px;">
+     <i class="fab fa-youtube"></i> YouTube
+  </a>
+  <a href="https://www.facebook.com/share/16WgjRjsyt/" target="_blank"
+     style="display:inline-block; background:#3b5998; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; margin:5px;">
+     <i class="fab fa-facebook-f"></i> Facebook
+  </a>
+  <a href="https://www.instagram.com/timeoflifecentre" target="_blank"
+     style="display:inline-block; background:#E1306C; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; margin:5px;">
+     <i class="fab fa-instagram"></i> Instagram
+  </a>
+  <a href="https://www.tiktok.com/@timeoflifecentre" target="_blank"
+     style="display:inline-block; background:#000000; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; margin:5px;">
+     <i class="fab fa-tiktok"></i> TikTok
+  </a>
+</div>
+
+<h3>Church Location</h3>
+<div class="map-box">
+<iframe src="https://maps.google.com/maps?q=Nkomazi%20Mpumalanga&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;"></iframe>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Time Of Life Centre Ministries. All Rights Reserved.</p>
+<p><b>Christ Lives Forever</b></p>
+<p>NPO: 2021/988503/08</p>
+<p>Led by Rafael Michael – The Divine Healer</p>
+<p style="margin-top:15px;">
+<a href="terms.html" target="_blank">Terms & Conditions</a> |
+<a href="privacy.html" target="_blank">Privacy Policy</a> |
+<a href="cookies.html" target="_blank">Cookie Policy</a> |
+<a href="donation-disclaimer.html" target="_blank">Giving Disclaimer</a>
+</p>
+</footer>
+
+<a href="https://wa.me/27798081867" class="floating-whatsapp">💬</a>
+<script src="https://apis.google.com/js/platform.js"></script>
+</body>
+</html>
